@@ -1,0 +1,87 @@
+/* Table Container */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Table Headers */
+th {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Table Data Cells */
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Hover Effect for Table Rows */
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Action Column */
+td:last-child {
+  text-align: center;
+  padding: 12px;
+}
+
+/* Delete Icon Styles */
+td:last-child .fa-trash-can {
+  color: #e74c3c;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+td:last-child .fa-trash-can:hover {
+  color: #c0392b;
+}
+
+/* Adding Zebra Stripe Effect for Rows */
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Table Border Styles */
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  th, td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  td:last-child .fa-trash-can {
+    font-size: 1.3rem;
+  }
+}
