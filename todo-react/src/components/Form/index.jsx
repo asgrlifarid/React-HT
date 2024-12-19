@@ -1,27 +1,30 @@
 import { useState } from "react";
 import './index.css'
 import { nanoid } from "nanoid";
+import Button from "../Button";
 
 
 const Form = ({ students, setStudents }) => {
   const [studentName, setStudentName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
+
+  
 
   const handleAddStudent = (e) => {
     e.preventDefault();
 
-    if (studentName && age) {
+    if (studentName) {
       const student = {
         id: nanoid(),
         studentName,
-        age,
+        isCompleted : false,
       };
 
       setStudents([...students, student]);
 
       setStudentName("");
 
-      setAge(0);
+      // setAge("");
     } else {
       window.alert("fields can not be empty!!");
     }
@@ -31,34 +34,37 @@ const Form = ({ students, setStudents }) => {
    
       <form onSubmit={handleAddStudent}>
         <fieldset>
-          <legend>Student Form</legend>
+          <legend>Todo List</legend>
           <div className="inputs">
             <input
               type="text"
               id="name"
-              placeholder="student name"
+              placeholder="todo name"
               value={studentName}
               onChange={(e) => {
                 setStudentName(e.target.value.trim());
               }}
             />
-            <input
+            {/* <input
               type="number"
-              id="age"
-              placeholder="age"
+              id="count"
+              placeholder="count"
               value={age}
               onChange={(e) => {
                 setAge(+e.target.value);
               }}
-            />
+            /> */}
         
           </div>
+          
         </fieldset>
         <button>ADD</button>
+        
         
       </form>
 
   );
+
 };
 
 export default Form;
