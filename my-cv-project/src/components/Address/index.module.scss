@@ -1,0 +1,58 @@
+.contactInfo {
+    margin-top: 60px;
+  width: 100%;
+  background-color: #3dfab1;
+  color: #000;
+  padding: 3rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: #7FFFD4;
+  border-radius: 50%;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: #000;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.details {
+  font-size: 0.875rem;
+  color: #000;
+}
+
