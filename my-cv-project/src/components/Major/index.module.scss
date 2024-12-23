@@ -97,7 +97,7 @@ body {
   height: 400px;
 }
 
-.hexagonBorder {
+.serhed {
  
   position: absolute;
   inset: 0;
@@ -105,11 +105,11 @@ body {
   border-radius: 24px;
 }
 
-.hexagonBorder:nth-child(1) {
+.serhed:nth-child(1) {
   transform: rotate(45deg);
 }
 
-.hexagonBorder:nth-child(2) {
+.serhed:nth-child(2) {
   transform: rotate(-45deg);
 }
 

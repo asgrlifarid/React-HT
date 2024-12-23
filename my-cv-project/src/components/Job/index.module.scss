@@ -12,6 +12,7 @@
 }
 
 .sectionTitle {
+
   font-size: 2rem;
   font-weight: 800;
   color: #1a202c;
@@ -52,21 +53,21 @@
   }
 }
 
-// .imageWrapper {
-//   position: relative;
-//   aspect-ratio: 1;
-// }
+.sekil {
+  position: relative;
+  aspect-ratio: 1;
+}
 
-// .image {
-//   object-fit: cover;
-//   width: 100%;
-//   height: 100%;
-//   transition: transform 0.3s ease-in-out;
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
 
-//   &:hover {
-//     transform: scale(1.05);
-//   }
-// }
+  &:hover {
+    transform: scale(1.05);
+  }
+}
 
 .weight {
   position: absolute;

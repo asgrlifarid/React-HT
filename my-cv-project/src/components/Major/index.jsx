@@ -38,8 +38,8 @@ const Major = () => {
           </div>
           <div className={styles.imageSection}>
             <div className={styles.imageContainer}>
-              <div className={styles.hexagonBorder} />
-              <div className={styles.hexagonBorder} />
+              <div className={styles.serhed} />
+              <div className={styles.serhed} />
               <div className={styles.profileImage}>
                 <img src={img} alt="Portfolio Image" />
               </div>

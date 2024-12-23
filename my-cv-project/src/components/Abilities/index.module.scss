@@ -1,6 +1,8 @@
 .container {
   padding: 2rem;
   background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px
 }
 
 .title {
@@ -18,20 +20,20 @@
   margin: 0 auto;
 }
 
-.skillItem {
+.bacarig {
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
 }
 
-.skillName {
+.bacarigAd {
   color: #333;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.progressBar {
+.yasilxett {
   width: 100%;
   height: 4px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -39,7 +41,7 @@
   overflow: hidden;
 }
 
-.progress {
+.yasil {
   height: 100%;
   background-color: #4ade80;
   border-radius: 2px;
