@@ -1,0 +1,110 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 480px; /* Increased card height */
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background-color: #f4f4f4;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px; /* Adjusted this height as well */
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #ff5722; /* Color on hover */
+  }
+}
+
+.price {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.heartIcon {
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin-bottom: 10px;
+
+  &:hover {
+    color: #ff5722;
+  }
+}
+
+.filledHeart {
+  color: #ff5722;
+}
+
+.regularHeart {
+  color: #bbb;
+}
+
+.button {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e64a19;
+  }
+}
