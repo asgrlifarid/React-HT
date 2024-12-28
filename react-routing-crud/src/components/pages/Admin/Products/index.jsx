@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { endpoints } from '../../../services/constant';
-import controller from '../../../services';
-import Swal from 'sweetalert2';  
+import React, { useEffect, useState } from "react";
+import { endpoints } from "../../../services/constant";
+import controller from "../../../services";
+import Swal from "sweetalert2";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -9,55 +9,91 @@ const AdminProducts = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    controller.getAllData(endpoints.products)
+    controller
+      .getAllData(endpoints.products)
       .then((data) => {
         setProducts(data);
         setLoading(false);
       })
       .catch((err) => {
-        setError('Failed to load products');
+        setError("Failed to load products");
         setLoading(false);
       });
   }, []);
 
   const handleDelete = (product) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: `Do you want to delete the product: ${product.title}?`,
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel',
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-       
-        controller.deleteDataById(endpoints.products, product.id) 
+        controller
+          .deleteDataById(endpoints.products, product.id)
           .then(() => {
-           
             setProducts(products.filter((item) => item.id !== product.id));
-            Swal.fire('Deleted!', 'The product has been deleted.', 'success');
+            Swal.fire("Deleted!", "The product has been deleted.", "success");
           })
           .catch((err) => {
-            console.error('Error deleting product:', err);
-            Swal.fire('Error!', 'There was an issue deleting the product.', 'error');
+            console.error("Error deleting product:", err);
+            Swal.fire(
+              "Error!",
+              "There was an issue deleting the product.",
+              "error"
+            );
           });
       }
     });
   };
 
-
   const handleEdit = (product) => {
     Swal.fire({
-      title: 'Edit Product',
-      text: `You are about to edit the product: ${product.title}`,
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonText: 'Proceed to Edit',
-      cancelButtonText: 'Cancel',
+      title: "Edit Product",
+      html: `
+        <input id="swal-input-title" class="swal2-input" value="${product.title}" placeholder="Title" />
+        <input id="swal-input-description" class="swal2-input" value="${product.description}" placeholder="Description" />
+        <input id="swal-input-price" class="swal2-input" type="number" value="${product.price}" placeholder="Price" />
+        <input id="swal-input-image" class="swal2-input" value="${product.image}" placeholder="Image URL" />
+      `,
+      focusConfirm: false,
+      preConfirm: () => {
+        const title = document.getElementById("swal-input-title").value;
+        const description = document.getElementById(
+          "swal-input-description"
+        ).value;
+        const price = parseFloat(
+          document.getElementById("swal-input-price").value
+        );
+        const image = document.getElementById("swal-input-image").value;
+
+        return { title, description, price, image };
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('Proceeding to edit:', product);
-        
+        const updatedProduct = result.value;
+
+        controller
+          .editDataById(endpoints.products, product.id, updatedProduct)
+          .then((updatedProductData) => {
+  
+            setProducts(
+              products.map((p) =>
+                p.id === product.id ? { ...p, ...updatedProductData } : p
+              )
+            );
+            Swal.fire("Updated!", "The product has been updated.", "success");
+          })
+          .catch((err) => {
+            console.error("Error updating product:", err);
+            Swal.fire(
+              "Error!",
+              "There was an issue updating the product.",
+              "error"
+            );
+          });
       }
     });
   };
@@ -77,6 +113,7 @@ const AdminProducts = () => {
         <thead>
           <tr>
             <th>Image</th>
+            <th>Title</th>
             <th>Description</th>
             <th>Price</th>
             <th>Actions</th>
@@ -89,35 +126,36 @@ const AdminProducts = () => {
                 <img
                   src={product.image}
                   alt={product.title}
-                  style={{ width: '100px', height: '100px' }}
+                  style={{ width: "100px", height: "100px" }}
                 />
               </td>
+              <td>{product.title}</td>
               <td>{product.description}</td>
               <td>${product.price}</td>
               <td>
                 <button
-                  onClick={() => handleDelete(product)} 
+                  onClick={() => handleDelete(product)}
                   style={{
-                    backgroundColor: '#ff4d4d',
-                    color: 'white',
-                    padding: '10px 15px',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    marginRight: '10px',
+                    backgroundColor: "#ff4d4d",
+                    color: "white",
+                    padding: "10px 15px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    marginRight: "10px",
                   }}
                 >
                   Delete
                 </button>
                 <button
-                  onClick={() => handleEdit(product)} 
+                  onClick={() => handleEdit(product)}
                   style={{
-                    backgroundColor: '#4d94ff',
-                    color: 'white',
-                    padding: '10px 15px',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
+                    backgroundColor: "#4d94ff",
+                    color: "white",
+                    padding: "10px 15px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
                   }}
                 >
                   Edit

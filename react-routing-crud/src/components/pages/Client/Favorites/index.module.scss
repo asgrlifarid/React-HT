@@ -1,92 +1,85 @@
-.container {
-    padding: 20px;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-  
-    &:hover {
-      transform: translateY(-10px);
-    }
-  }
-  
-  .imageWrapper {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-  }
-  
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .info {
-    padding: 15px;
-  }
-  
-  .title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s;
-  
-    &:hover {
-      color: #ff5722; 
-    }
-  }
-  
-  .price {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .description {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 15px;
-  }
-  
-  .heartIcon {
-    font-size: 18px;
-    cursor: pointer;
-    transition: color 0.3s;
-  
-    &:hover {
-      color: #ff5722;
-    }
-  }
-  
-  .filledHeart {
-    color: #ff5722;
-  }
-  
-  .regularHeart {
-    color: #bbb;
-  }
-  
-  .noFavorites {
-    text-align: center;
-    font-size: 18px;
-    color: #777;
-  }
-  
+// index.module.scss
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  max-height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+.content {
+  padding: 15px;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+}
+
+.priceRating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  color: #FFD700;
+}
+
+.ratingCount {
+  font-size: 12px;
+  color: #888;
+  margin-left: 5px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.favoriteIcon {
+  cursor: pointer;
+  font-size: 18px;
+}
