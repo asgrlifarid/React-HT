@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { endpoints } from '../../../services/constant';
 import controller from '../../../services';
@@ -8,6 +8,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
 import TextField from '@mui/material/TextField';
+import { FavoritesContext } from '../../../context/FavoritesContext';
+
+const { toggleFavorites, favorites = [] } = useContext(FavoritesContext);
 
 const ClientProducts = () => {
   const navigate = useNavigate(); 
@@ -103,9 +106,11 @@ const ClientProducts = () => {
                     </div>
                     <div className={styles.footer}>
                       <span onClick={() => handleInfoClick(product.id)} >
-                        <FaInfoCircle />
+                        <FaInfoCircle /> 
                       </span>
+                      
                     </div>
+                    
                     <button className={styles.button}>
                       Add to Cart
                     </button>

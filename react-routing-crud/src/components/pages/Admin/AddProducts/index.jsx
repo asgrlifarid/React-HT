@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import Swal from 'sweetalert2'; 
+
 
 
 import styles from './index.module.scss';
+import controller from '../../../services';
+import { endpoints } from '../../../services/constant';
 
 export default function BananaForm() {
 
@@ -22,50 +24,26 @@ export default function BananaForm() {
     }));
   };
 
-  
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const response = await controller.addNewData(endpoints.products, formData);
       if (response && response.status === 201) {
-      
-        Swal.fire({
-          icon: 'success',
-          title: 'Product Added',
-          text: 'The product has been added successfully!',
-        });
 
-      
-        setFormData({
-          title: '',
-          price: '',
-          description: '',
-          img: '',
-        });
+        console.log('Product added successfully:', response.data);
       } else {
-        
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong. Please try again.',
-        });
+        console.error('Error adding product:', response);
       }
     } catch (error) {
       console.error('Failed to add product:', error);
-
-     
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'There was an error adding the product. Please try again later.',
-      });
     }
   };
 
   return (
     <form className={styles.bananaForm} onSubmit={handleSubmit}>
       <h2 className={styles.title}>Add a Product</h2>
-      
+
       <div className={styles.inputGroup}>
         <label htmlFor="title">Title</label>
         <input
