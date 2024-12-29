@@ -13,7 +13,7 @@ const AdminHeader = () => {
                   to="/admin"
                   className={({ isActive }) =>
                     isActive ? styles.active : styles.link
-                  }
+                  } end
                 >
                   Dashboard
                 </NavLink>
