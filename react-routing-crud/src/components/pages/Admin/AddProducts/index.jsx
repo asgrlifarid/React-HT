@@ -1,20 +1,21 @@
 import { useState } from 'react';
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
 import styles from './index.module.scss';
 import controller from '../../../services';
 import { endpoints } from '../../../services/constant';
 
 export default function BananaForm() {
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     title: '',
     price: '',
     description: '',
     img: '',
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormData);
+
+  const notify = () => toast("Wow so easy!");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,19 +25,30 @@ export default function BananaForm() {
     }));
   };
 
+  const validateForm = () => {
+    return formData.title && formData.price && formData.description && formData.img;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await controller.addNewData(endpoints.products, formData);
-      if (response && response.status === 201) {
 
-        console.log('Product added successfully:', response.data);
-      } else {
-        console.error('Error adding product:', response);
+    if (validateForm()) {
+      try {
+        const response = await controller.addNewData(endpoints.products, formData);
+        if (response && response.status === 201) {
+          console.log('Product added successfully:', response.data);
+          notify();
+          
+          // Reset form fields after successful submission
+          setFormData(initialFormData);
+        } else {
+          console.error('Error adding product:', response);
+        }
+      } catch (error) {
+        console.error('Failed to add product:', error);
       }
-    } catch (error) {
-      console.error('Failed to add product:', error);
+    } else {
+      toast.error("Please fill in all fields!");
     }
   };
 
@@ -94,6 +106,7 @@ export default function BananaForm() {
       </div>
 
       <button type="submit" className={styles.submitButton}>Add Product</button>
+      <ToastContainer />
     </form>
   );
 }

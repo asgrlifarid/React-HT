@@ -7,14 +7,17 @@ import { FaInfoCircle, FaHeart, FaRegHeart } from "react-icons/fa";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import TextField from "@mui/material/TextField";
-import { useFavorites } from "../../../context/FavoritesContext"; // Correct import
+import { useFavorites } from "../../../context/FavoritesContext"; 
+import { Helmet } from 'react-helmet-async';
+
 
 const ClientProducts = () => {
   const navigate = useNavigate();
-  const { favorites, toggleFavorites } = useFavorites(); // Using the context
+  const { favorites, toggleFavorites } = useFavorites();
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortOrder, setSortOrder] = useState("default"); 
 
   const getProducts = async () => {
     try {
@@ -31,21 +34,31 @@ const ClientProducts = () => {
   }, []);
 
   const handleInfoClick = (productId) => {
-    navigate(`/product/${productId}`);
+    navigate(`/products/${productId}`);
+  };
+
+  const handleSortChange = (event) => {
+    setSortOrder(event.target.value);
   };
 
   useEffect(() => {
-    if (searchQuery === "") {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter(
+    let sortedProducts = [...products];
+    if (searchQuery) {
+      sortedProducts = sortedProducts.filter(
         (product) =>
           product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           product.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
-      setFilteredProducts(filtered);
     }
-  }, [searchQuery, products]);
+
+    if (sortOrder === "asc") {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === "desc") {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts(sortedProducts);
+  }, [searchQuery, products, sortOrder]);
 
   const isFavorite = (productId) => {
     return favorites.some((fav) => fav.id === productId);
@@ -53,6 +66,10 @@ const ClientProducts = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Ferid</title>
+        <link rel="canonical" href="https://www.tacobell.com/" /> 
+      </Helmet>
       <Box sx={{ flexGrow: 1 }}>
         <TextField
           label="Search Products"
@@ -69,6 +86,21 @@ const ClientProducts = () => {
             display: "block",
           }}
         />
+
+        
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          <label htmlFor="sortOrder">Sort By Price: </label>
+          <select
+            id="sortOrder"
+            value={sortOrder}
+            onChange={handleSortChange}
+            style={{ marginLeft: "10px", padding: "5px" }}
+          >
+            <option value="default">Default</option>
+            <option value="asc">Price: Low to High</option>
+            <option value="desc">Price: High to Low</option>
+          </select>
+        </div>
 
         <Grid container spacing={2}>
           {filteredProducts.length === 0 ? (
@@ -123,7 +155,7 @@ const ClientProducts = () => {
                         <FaInfoCircle />
                       </span>
                       <span
-                        onClick={() => toggleFavorites(product)} // Toggle favorites
+                        onClick={() => toggleFavorites(product)} 
                         className={styles.favoriteIcon}
                       >
                         {isFavorite(product.id) ? (
