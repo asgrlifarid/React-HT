@@ -1,0 +1,41 @@
+.favoritesContainer {
+
+    display: flex;
+    flex-direction: column;
+padding-top: 160px;
+    gap: 20px;
+}
+
+.emptyMessage {
+    font-size: 1.5rem;
+    color: #999;
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.itemName {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.favoriteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ff4c4c;
+    transition: color 0.3s ease;
+}
+
+.favoriteButton:hover {
+    color: #e60000;
+}
