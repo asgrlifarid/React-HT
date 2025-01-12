@@ -10,7 +10,7 @@ const {
 const router = express.Router();
 
 router.get("/", getProd);
-router.get("/:id", getProdById);
+router.get("/product/:id", getProdById);
 router.get("/search", searchByTitle);
 router.delete("/:id", getDeleteById);
 router.post("/", postProd);
