@@ -6,6 +6,9 @@ const blogSchema = new Schema({
   explaination: String,
   country: String,
   imgURL: String,
-});
+  
+},
+
+{versionKey:false, timestamps:true});
 const ProductModel = mongoose.model("Products", blogSchema);
 module.exports = ProductModel;

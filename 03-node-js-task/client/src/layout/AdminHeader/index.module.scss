@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+   justify-content: space-between;
+   padding: 1rem 3rem;
+
+}
+nav{
+    ul{
+        display: flex;
+        gap: 3rem;
+        a{
+            text-decoration: none;
+            list-style: none;
+            
+        }
+    }
+}

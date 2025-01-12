@@ -1,0 +1,55 @@
+.firstDiv{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    // padding-left: 5%;
+}
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+//   height: 400px;
+}
+.image{
+    width: 100%;
+}
+.heading{
+padding: 5%;
+}
+.text{
+    padding: 5%;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 4%;
+    padding:5%;
+}
+.button{
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+//      &:hover {
+   
+//     transform: translateY(-2px);
+//   }
+  &:active {
+    transform: translateY(1px);
+   
+  }
+  .button:focus {
+  outline: none;
+
+}
+    
+}

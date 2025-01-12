@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+   justify-content: space-between;
+//    padding: 1rem 3rem;
+   position: fixed;
+   z-index: 2;
+       width: 100%  ;
+   background-color: #fff;
+   .texxt{
+    padding: 2%;
+   }
+
+}
+.links{
+padding: 2%;
+    nav{
+    
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-right:20px ;
+     
+        a{
+            text-decoration: none;
+            list-style: none;
+                
+
+        }
+    }
+}
+}
