@@ -26,6 +26,7 @@ export const AddProducts = () => {
         draggable: true,
       });
     formik.resetForm();
+    
      } catch (error) {
         console.log(error);
         

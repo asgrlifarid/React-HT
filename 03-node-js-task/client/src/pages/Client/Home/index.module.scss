@@ -1,0 +1,108 @@
+main {
+    padding-top: 200px;
+    #home {
+      background-color: rgb(245, 32, 74);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px 0;
+  
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+  
+      .homeInfo {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        h4{
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 20px;
+        }
+        h1 {
+          font-weight: 800;
+          font-size: 60px;
+          line-height: 72px;
+        }
+        button {
+          border: none;
+          padding: 15px;
+          font-weight: 700;
+          margin-top: 20px;
+          cursor: pointer;
+  
+          &:hover {
+            border: 1px solid #fff;
+            background-color: transparent;
+            color: #fff;
+          }
+        }
+      }
+  
+      img {
+        width: 100%; 
+        max-width: 100%; 
+        height: auto;
+      }
+    }
+    #second{
+        padding: 50px 0 ;
+        h1{
+            text-align: center;
+            font-weight: 700;
+        }
+        p{
+            text-align: center  ;
+            color: rgb(119,119,119);
+
+            padding: 20px 0 50px 0;
+        }
+        .companies{
+            height: 185px;
+            
+
+            h4{
+                text-align: center;
+                transition: all 0.3s;
+                &:hover{
+                    color:rgb(245, 32, 74) ;
+                }
+            }
+            p{
+                text-align: left;
+                
+                word-spacing: 5px;
+            }
+        }
+    }
+
+    #blogs{
+        padding: 100px 0 50px 0;
+        h1{
+            text-align: center;
+            font-weight: 700;
+        }
+        p{
+            text-align: center  ;
+            color: rgb(119,119,119);
+
+            padding: 20px 0 50px 0;
+        }
+        .blogs{
+            h3{
+                text-align: left;
+                padding-top: 16px;
+            }
+            p{
+                text-align: left   ;
+                padding: 0;
+            }
+        }
+    }
+  }
+  
